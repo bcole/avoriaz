@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 20px brown-regular,helvetica,arial,sans-serif;
+  font: 22px brown-regular,helvetica,arial,sans-serif;
 }
 
 a {
@@ -14,21 +14,26 @@ a {
 
 .hasSet small {
   margin-left: 5px;
-  font-size: 12px;
+  font-size: 14px;
+}
+
+#scheduleContainer {
+  min-width: 50%;
+  overflow-x: scroll;
 }
 
 .scheduleTable {
-  font: 20px brown-regular,helvetica,arial,sans-serif;
+  font: 22px brown-regular,helvetica,arial,sans-serif;
   letter-spacing: -.04em;
   line-height: 1.15;
   border-collapse: collapse;
-  min-width: 50%;
+  min-width: 100%;
   table-layout: fixed;
 }
 
 .scheduleTable th {
   padding: 5px 10px;
-  min-width: 90px;
+  min-width: 120px;
 }
 .scheduleTable thead th {
   border-bottom: 1px solid black;
