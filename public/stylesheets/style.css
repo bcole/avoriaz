@@ -1,0 +1,92 @@
+body {
+  padding: 50px;
+  font: 20px brown-regular,helvetica,arial,sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.hasSet {
+  background-color: #BBEECC;
+  border-radius: 10px 30px;
+}
+
+.hasSet small {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.scheduleTable {
+  font: 20px brown-regular,helvetica,arial,sans-serif;
+  letter-spacing: -.04em;
+  line-height: 1.15;
+  border-collapse: collapse;
+  min-width: 50%;
+  table-layout: fixed;
+}
+
+.scheduleTable th {
+  padding: 5px 10px;
+  min-width: 90px;
+}
+.scheduleTable thead th {
+  border-bottom: 1px solid black;
+}
+.scheduleTable thead th:not(:last-child) {
+  border-right: 1px solid #999999;
+}
+.scheduleTable tbody tr td:not(:last-child):not(.partialCell) {
+  border-right: 1px solid #999999;
+}
+.scheduleTable tbody tr:nth-child(odd) {
+  background-color: #F3F7F3;
+}
+
+.scheduleTable div {
+  padding: 5px 15px;
+}
+
+#dayPicker span {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#dayPicker span:hover {
+  background-color: #F3F7F3;
+}
+
+.selectedDay {
+  background-color: #F3F7F3;
+  border-bottom: 3px solid #225522;
+}
+
+/* old */
+/* 
+
+.days {
+  display: inline-block;
+  background-color: #00B7FF;
+}
+
+.days > span {
+  display: inline-block;
+  border: 1px solid red;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.people {
+  display: inline-block;
+  background-color: green;
+  position: relative;
+  top: 32px;
+}
+
+.people > span {
+  display: inline-block;
+  border: 1px solid red;
+  padding: 5px;
+} */
