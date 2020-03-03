@@ -30,23 +30,46 @@ function initSchedule() {
     
     function addDayPicker() {
         const dayPicker = document.getElementById("dayPicker");
-        let curSelectedDay;
+        let curSelectedDay = 0;
+        const daySpans = [];
 
         for(let i=0; i<schedule.length; i++) {
+            function spanClickHandler(e) {
+                // Should dropdown?
+                if(this.classList.contains("selectedDay") && this.classList.contains("dayLongSpan")) {
+                    for(const span of daySpans) {
+                        if(span.longSpan.classList.contains("selectedDay")) continue;
+                        span.longSpan.style.display = (span.longSpan.style.display === "block") ? "none" : "block";
+                    }
+                } else {    // Should select
+                    for(const span of daySpans) {
+                        span.longSpan.style.display = "";
+                    }
+                    daySpans[curSelectedDay].shortSpan.classList.remove("selectedDay");
+                    daySpans[curSelectedDay].longSpan.classList.remove("selectedDay");
+                    daySpans[i].shortSpan.classList.add("selectedDay");
+                    daySpans[i].longSpan.classList.add("selectedDay");
+                    curSelectedDay = i;
+                    addBody(i);
+                }
+            }
+
             const day = schedule[i];
             const daySpan = document.createElement("span");
+            const dayLongSpan = document.createElement("span");
             daySpan.appendChild(document.createTextNode(day.name));
+            dayLongSpan.appendChild(document.createTextNode(day.longName));
+            daySpan.classList.add("daySpan");
+            dayLongSpan.classList.add("dayLongSpan");
             if(i === 0) {
-                daySpan.className = "selectedDay";
-                curSelectedDay = daySpan;
+                daySpan.classList.add("selectedDay");
+                dayLongSpan.classList.add("selectedDay");
             }
-            daySpan.addEventListener("click", function(e) {
-                curSelectedDay.className = "";
-                this.className = "selectedDay";
-                curSelectedDay = this;
-                addBody(i);
-            })
+            daySpan.addEventListener("click", spanClickHandler);
+            dayLongSpan.addEventListener("click", spanClickHandler);
             dayPicker.appendChild(daySpan);
+            dayPicker.appendChild(dayLongSpan);
+            daySpans.push({shortSpan: daySpan, longSpan: dayLongSpan});
         }
     }
 

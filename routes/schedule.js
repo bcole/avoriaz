@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 const schedule = [
   {
       name: "Sun",
+      longName: "Sunday",
       venues: [
           {
               name: "Main Stage",
@@ -78,6 +79,7 @@ const schedule = [
       ]
   }, {
       name: "Mon",
+      longName: "Monday",
       venues: [
           {
               name: "Main Stage",
@@ -90,7 +92,7 @@ const schedule = [
               events: [
                   {
                       name: "Amy Wiles",
-                      startTime: 14,
+                      startTime: 15,
                       endTime: 16.5
                   }, {
                       name: "Oliver Smith",
@@ -136,6 +138,212 @@ const schedule = [
               ]
           }
       ]
+  }, {
+    name: "Tue",
+    longName: "Tuesday",
+    venues: [
+        {
+            name: "Main Stage",
+            events: [
+                {
+                    name: "Oliver Smith",
+                    startTime: 19.5,
+                    endTime: 20.5
+                }, {
+                    name: "Cosmic Gate",
+                    startTime: 20.5,
+                    endTime: 22
+                }, {
+                    name: "Seven Lions",
+                    startTime: 22,
+                    endTime: 23.5
+                }
+            ]
+        }, {
+            name: "Folie Douce",
+            events: [
+                {
+                    name: "La Push",
+                    startTime: 15,
+                    endTime: 16.5
+                }, {
+                    name: "D&G FTO",
+                    startTime: 16.5,
+                    endTime: 18.5
+                }
+            ]
+        }, {
+            name: "Apres Stage",
+            events: []
+        }, {
+            name: "Beats Club",
+            events: [
+                {
+                    name: "Josep",
+                    startTime: 23,
+                    endTime: 24
+                }, {
+                    name: "Sunny Lax",
+                    startTime: 24,
+                    endTime: 25.5
+                }, {
+                    name: "Genix",
+                    startTime: 25.5,
+                    endTime: 26.75
+                }
+            ]
+        }, {
+            name: "Yak",
+            events: [
+                {
+                    name: "Mat Zo",
+                    subText: "(D&B Set)",
+                    startTime: 25,
+                    endTime: 27
+                }, {
+                    name: "Tinlicker",
+                    subText: "(House Set)",
+                    startTime: 27,
+                    endTime: 29
+                }
+            ]
+        }
+    ]
+  }, {
+    name: "Wed",
+    longName: "Wednesday",
+    venues: [
+        {
+            name: "Main Stage",
+            events: []
+        }, {
+            name: "Folie Douce",
+            events: []
+        }, {
+            name: "Apres Stage",
+            events: [
+                {
+                    name: "Grum",
+                    subText: "(Archives Set)",
+                    startTime: 15,
+                    endTime: 16.5
+                }, {
+                    name: "Maor Levi",
+                    subText: "(Anjuna Memories)",
+                    startTime: 16.5,
+                    endTime: 18.5
+                }, {
+                    name: "Jon O'Bir",
+                    startTime: 18.5,
+                    endTime: 20
+                }, {
+                    name: "Gem & Tauri",
+                    subText: "(Ophelia)",
+                    startTime: 22,
+                    endTime: 23
+                }, {
+                    name: "Crystal Skies",
+                    subText: "(Ophelia)",
+                    startTime: 23,
+                    endTime: 24
+                }, {
+                    name: "Blastoyz",
+                    subText: "(Ophelia)",
+                    startTime: 24,
+                    endTime: 25.25
+                }, {
+                    name: "Seven Lions",
+                    subText: "(Ophelia)",
+                    startTime: 25.25,
+                    endTime: 26.75
+                }
+            ]
+        }, {
+            name: "Beats Club",
+            events: [
+                {
+                    name: "DT8 Project",
+                    startTime: 25,
+                    endTime: 27
+                }, {
+                    name: "Nitrous Oxide",
+                    subText: "(Anjuna Memories)",
+                    startTime: 27,
+                    endTime: 29
+                }
+            ]
+        }, {
+            name: "Yak",
+            events: []
+        }
+    ]
+  }, {
+    name: "Thu",
+    longName: "Thursday",
+    venues: [
+        {
+            name: "Main Stage",
+            events: []
+        }, {
+            name: "Folie Douce",
+            events: [
+                {
+                    name: "Amy Wiles",
+                    startTime: 15,
+                    endTime: 16
+                }, {
+                    name: "PROFF",
+                    startTime: 16,
+                    endTime: 17.5
+                }, {
+                    name: "Tinlicker",
+                    startTime: 17.5,
+                    endTime: 19
+                }, {
+                    name: "Grum",
+                    startTime: 19,
+                    endTime: 20.5
+                }, {
+                    name: "ilan Bluestone",
+                    startTime: 20.5,
+                    endTime: 22
+                }
+            ]
+        }, {
+            name: "Apres Stage",
+            events: []
+        }, {
+            name: "Beats Club",
+            events: [
+                {
+                    name: "Jaytech",
+                    startTime: 23,
+                    endTime: 24
+                }, {
+                    name: "Maor Levi",
+                    startTime: 24,
+                    endTime: 25.5
+                }, {
+                    name: "Super8 & Tab",
+                    startTime: 25.5,
+                    endTime: 26.75
+                }
+            ]
+        }, {
+            name: "Yak",
+            events: [
+                {
+                    name: "Amber Stomp b2b Amy Wiles",
+                    startTime: 25,
+                    endTime: 27
+                }, {
+                    name: "D&G FTO b2b Jon O'Bir",
+                    startTime: 27,
+                    endTime: 29
+                }
+            ]
+        }
+    ]
   }
 ]
 const startTime = 15;

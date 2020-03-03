@@ -1,20 +1,32 @@
 body {
   padding: 50px;
-  font: 22px brown-regular,helvetica,arial,sans-serif;
+  font: 20px brown-regular,helvetica,arial,sans-serif;
+  background-color: #F9F9F9;
 }
 
 a {
   color: #00B7FF;
 }
 
+#titleLogo {
+  height: 60px;
+  margin-bottom: 60px;
+}
+
 .hasSet {
   background-color: #BBEECC;
   border-radius: 10px 30px;
+  border: 1px solid #225522;
 }
 
 .hasSet small {
   margin-left: 5px;
   font-size: 14px;
+}
+
+#container {
+  border: 1px solid #EEEEEE;
+  background-color: #FFFFFF;
 }
 
 #scheduleContainer {
@@ -23,7 +35,7 @@ a {
 }
 
 .scheduleTable {
-  font: 22px brown-regular,helvetica,arial,sans-serif;
+  font: 20px brown-regular,helvetica,arial,sans-serif;
   letter-spacing: -.04em;
   line-height: 1.15;
   border-collapse: collapse;
@@ -48,6 +60,10 @@ a {
   background-color: #F3F7F3;
 }
 
+.scheduleTable tbody th {
+  height: 65px;
+}
+
 .scheduleTable div {
   padding: 5px 15px;
 }
@@ -59,39 +75,51 @@ a {
 }
 
 #dayPicker span:hover {
-  background-color: #F3F7F3;
+  background-color: #E9ECE9;
+}
+
+#dayPicker span.dayLongSpan {
+  display: none;
 }
 
 .selectedDay {
-  background-color: #F3F7F3;
+  background-color: #E9ECE9;
   border-bottom: 3px solid #225522;
 }
 
-/* old */
-/* 
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 20px;
+    font-size: 18px;
+  }
 
-.days {
-  display: inline-block;
-  background-color: #00B7FF;
+  .scheduleTable {
+    font-size: 18px;
+  }
+  
+  .hasSet small {
+    font-size: 12px;
+  }
+  
+  #dayPicker span.daySpan {
+    display: none;
+  }
+
+  #dayPicker span.dayLongSpan {
+    display: block;
+    border: 0;
+  }
+  
+  #dayPicker {
+    border-bottom: 1px solid #225522;
+  }
+  
+  #dayPicker span.selectedDay::after {
+    content: " \25BC";
+    float: right;
+  }
+
+  #dayPicker span:not(.selectedDay) {
+    display: none;
+  }
 }
-
-.days > span {
-  display: inline-block;
-  border: 1px solid red;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 5px;
-}
-
-.people {
-  display: inline-block;
-  background-color: green;
-  position: relative;
-  top: 32px;
-}
-
-.people > span {
-  display: inline-block;
-  border: 1px solid red;
-  padding: 5px;
-} */
