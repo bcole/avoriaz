@@ -187,7 +187,7 @@ function initSchedule() {
         div.className = "infoModal";
         div.appendChild(document.createTextNode(eventData.name));
         div.style.top = clickEvent.y;
-        div.style.left = clickEvent.x;
+        div.style.left = Math.min(clickEvent.x, window.innerWidth-220); // Don't let modal be pushed too far right.
 
         if(eventData.subText) {
             const subP = document.createElement("p");
