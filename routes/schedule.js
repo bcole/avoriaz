@@ -1,29 +1,58 @@
 var express = require('express');
 var router = express.Router();
+
 var ShortUID = require('short-uid');
 var uid = new ShortUID();
+
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/avoriaz', {useNewUrlParser: true, useUnifiedTopology: true});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+  console.log('Connected to DB');
+});
+
+var scheduleSchema = new mongoose.Schema({
+    id: String,
+    schedule: Schema.Types.Mixed
+});
+
+var ScheduleModel = mongoose.model('Schedule', scheduleSchema);
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.json(data);
 });
 
-const savedSchedules = {};
-
 router.get('/saved', function(req, res, next) {
     const id = req.query.id;
     if(!id) {
         // TODO - throw an error.
-        res.json({});
+        return res.json({});
     }
 
-    res.json(savedSchedules[id] || {});
+    ScheduleModel.find({id}, (err, schedules) => {
+        if(err) {
+            res.json({error: "Internal Server Error"});
+        } else {
+            res.json(schedules && schedules[0] && schedules[0].schedule || {});
+        }
+    });
 });
 
 router.post('/saved', function(req, res, next) {
     const id = uid.randomUUID(8);
-    savedSchedules[id] = req.body;
-    res.json({id});
+
+    const scheduleToSave = new ScheduleModel({id, schedule: req.body});
+    scheduleToSave.save((err) => {
+        if(err) {
+            res.json({error: "Internal Server Error"});
+        } else {
+            res.json({id});
+        }
+    });
 })
 
 const schedule = [
