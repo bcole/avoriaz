@@ -1,34 +1,81 @@
 
-function initSchedule() {
-    let schedule, startTime, endTime, granularity, savedSchedule;
-    const container = document.getElementById("container");
-    let modalDiv = null;
-
-    // Get schedule from backend
+function sendRequest(url, resolve, reject, method = 'GET', body) {
     const request = new XMLHttpRequest();
-    request.open('GET', '/api/schedule', true);
+    request.open(method, url, true);
 
     request.onload = function() {
         if (this.status >= 200 && this.status < 400) {
             // Success!
-            ({schedule, startTime, endTime, granularity} = JSON.parse(this.response));
-            
-            // Render calendar
-            addDayPicker();
-            addHeading();
-            addBody(0);
+            resolve(this.response);
         } else {
             // We reached our target server, but it returned an error
             console.log("ERROR1");
+            reject();
         }
     };
 
     request.onerror = function() {
         // There was a connection error of some sort
         console.log("ERROR2");
+        reject();
     };
 
-    request.send();
+    if(body) {
+        request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        request.send(JSON.stringify(body));
+    } else {
+        request.send();
+    }
+}
+
+function initSchedule() {
+    let schedule, startTime, endTime, granularity, savedSchedule, sharedSchedule;
+    const container = document.getElementById("container");
+    let modalDiv = null;
+    const urlParams = new URLSearchParams(window.location.search);
+    const sharedScheduleId = urlParams.get('id');
+    const sharedMode = !!sharedScheduleId;
+
+    if(sharedMode) {
+        document.getElementById("sharedNotice").style.display = "block";
+    } else {
+        document.getElementById("shareContainer").style.display = "block";
+        document.getElementById("shareButton").addEventListener('click', function() {
+            new Promise((resolve, reject) => {
+                sendRequest('/api/schedule/saved', resolve, reject, 'POST', savedSchedule);
+            }).then(response => {
+                createSharedResults(`${window.location.origin}/?id=${JSON.parse(response).id}`);
+            });
+        })
+    }
+
+    const apiCalls = [];
+    // Get master schedule data from backend
+    apiCalls.push(new Promise(function(resolve, reject) {
+        sendRequest('/api/schedule', resolve, reject);
+    }));
+
+    // Get saved user schedule, if sharedMode.
+    if(sharedMode) {
+        apiCalls.push(new Promise(function(resolve, reject) {
+            sendRequest(`/api/schedule/saved?id=${sharedScheduleId}`, resolve, reject);
+        }));
+    }
+
+    Promise.all(apiCalls).then(responses => {
+        // Master schedule data
+        ({schedule, startTime, endTime, granularity} = JSON.parse(responses[0]));
+
+        if(sharedMode) {
+            // User schedule data
+            sharedSchedule = JSON.parse(responses[1]);
+        }
+        
+        // Render calendar
+        addDayPicker();
+        addHeading();
+        addBody(0);
+    });
 
     savedSchedule = JSON.parse(localStorage.getItem("schedule")) || {};
     // savedSchedule = {
@@ -145,7 +192,7 @@ function initSchedule() {
                     newDiv.appendChild(subText);
                 }
                 newDiv.classList.add("hasSet");
-                if(savedSchedule[eventData.id]) {
+                if(isEventSelected(eventData.id)) {
                     newDiv.classList.add("savedSet");
                 }
                 newDiv.addEventListener('click', function(clickEvent) {
@@ -227,25 +274,27 @@ function initSchedule() {
         venueP.appendChild(document.createTextNode(venue.name));
         div.appendChild(venueP);
 
-        const saveDiv = document.createElement("div");
-        saveDiv.className = 'saveContainer';
-        const saveButton = document.createElement("button");
-        const saveText = document.createTextNode(savedSchedule[eventData.id] ? "Remove from Schedule" : "Add to Schedule");
-        saveButton.appendChild(saveText);
-        saveButton.addEventListener('click', function() {
-            if(!savedSchedule[eventData.id]) {
-                eventData.div.classList.add("savedSet");
-                savedSchedule[eventData.id] = true;
-                saveText.nodeValue = "Remove from Schedule";
-            } else {
-                eventData.div.classList.remove("savedSet");
-                savedSchedule[eventData.id] = false;
-                saveText.nodeValue = "Add to Schedule";
-            }
-            localStorage.setItem("schedule", JSON.stringify(savedSchedule));
-        });
-        saveDiv.appendChild(saveButton);
-        div.appendChild(saveDiv);
+        if(!sharedMode) {
+            const saveDiv = document.createElement("div");
+            saveDiv.className = 'saveContainer';
+            const saveButton = document.createElement("button");
+            const saveText = document.createTextNode(savedSchedule[eventData.id] ? "Remove from Schedule" : "Add to Schedule");
+            saveButton.appendChild(saveText);
+            saveButton.addEventListener('click', function() {
+                if(!savedSchedule[eventData.id]) {
+                    eventData.div.classList.add("savedSet");
+                    savedSchedule[eventData.id] = true;
+                    saveText.nodeValue = "Remove from Schedule";
+                } else {
+                    eventData.div.classList.remove("savedSet");
+                    savedSchedule[eventData.id] = false;
+                    saveText.nodeValue = "Add to Schedule";
+                }
+                localStorage.setItem("schedule", JSON.stringify(savedSchedule));
+            });
+            saveDiv.appendChild(saveButton);
+            div.appendChild(saveDiv);
+        }
 
         const xDiv = document.createElement("div");
         xDiv.className = 'x';
@@ -260,10 +309,26 @@ function initSchedule() {
         return div;
     }
 
+    function createSharedResults(url) {
+        const sharedResults = document.getElementById("sharedResults");
+        sharedResults.innerHTML = "";
+
+        sharedResults.appendChild(document.createTextNode("Schedule link created: "));
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.appendChild(document.createTextNode(url));
+        sharedResults.appendChild(a);
+    }
+
     function getTime(time) {
         const hours = Math.floor(time);
         const minutes = ('' + (time - hours) * 60).padStart(2, '0');
         return hours > 23 ? hours == 24 ? `12:${minutes} AM` : `${hours-24}:${minutes} AM` : `${hours-12}:${minutes} PM`
+    }
+
+    function isEventSelected(eventId) {
+        return (sharedMode) ? !!sharedSchedule[eventId] : !!savedSchedule[eventId];
     }
 }
 

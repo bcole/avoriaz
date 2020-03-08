@@ -13,6 +13,19 @@ a:hover {
   text-decoration: underline;
 }
 
+button {
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #FCFCFC;
+  border: 1px solid #AAAACC;
+}
+
+button:hover {
+  background-color: #F5F5F5;
+  border: 1px solid #555566;
+}
+
 #titleLogo {
   height: 60px;
   margin-bottom: 60px;
@@ -137,22 +150,27 @@ a:hover {
   padding: 8px;
 }
 
-.infoModal div.saveContainer button {
-  padding: 7px;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #FCFCFC;
-  border: 1px solid #AAAACC;
-}
-
-.infoModal div.saveContainer button:hover {
-  background-color: #F5F5F5;
-  border: 1px solid #555566;
-}
-
 .footnote {
   font-size: 10pt;
   color: #555555;
+}
+
+#sharedNotice {
+  display: none;
+  font-size: 12pt;
+}
+
+#shareContainer {
+  display: none;
+  font-size: 12pt;
+  padding: 10px;
+  text-align: right;
+}
+
+#shareContainer button {
+  font-size: 12pt;
+  padding: 9px;
+  background-color: #FFFFFF;
 }
 
 @media only screen and (max-width: 600px) {

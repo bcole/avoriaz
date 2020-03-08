@@ -1,10 +1,30 @@
 var express = require('express');
 var router = express.Router();
+var ShortUID = require('short-uid');
+var uid = new ShortUID();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.json(data);
 });
+
+const savedSchedules = {};
+
+router.get('/saved', function(req, res, next) {
+    const id = req.query.id;
+    if(!id) {
+        // TODO - throw an error.
+        res.json({});
+    }
+
+    res.json(savedSchedules[id] || {});
+});
+
+router.post('/saved', function(req, res, next) {
+    const id = uid.randomUUID(8);
+    savedSchedules[id] = req.body;
+    res.json({id});
+})
 
 const schedule = [
   {
