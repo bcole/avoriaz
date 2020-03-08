@@ -14,14 +14,25 @@ a {
 }
 
 .hasSet {
-  background-color: #BBEECC;
+  background-color: #DDEEFF;
   border-radius: 10px 30px;
-  border: 1px solid #225522;
+  border: 1px solid #222255;
   cursor: pointer;
 }
 
 .hasSet small {
   margin-left: 5px;
+  font-size: 14px;
+}
+
+.savedSet {
+  background-color: #BBEECC;
+  border: 1px solid #225522;
+}
+
+.savedSet::after {
+  content: " \2713";
+  color: #005500;
   font-size: 14px;
 }
 
@@ -103,7 +114,7 @@ a {
   font-size: 12pt;
 }
 
-.infoModal div {
+.infoModal div.x {
   position: absolute;
   top: 4px;
   right: 6px;
@@ -112,8 +123,26 @@ a {
   color: #999999;
 }
 
-.infoModal div:hover {
+.infoModal div.x:hover {
   color: #000000;
+}
+
+.infoModal div.saveContainer {
+  text-align: center;
+  padding: 8px;
+}
+
+.infoModal div.saveContainer button {
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #FCFCFC;
+  border: 1px solid #AAAACC;
+}
+
+.infoModal div.saveContainer button:hover {
+  background-color: #F5F5F5;
+  border: 1px solid #555566;
 }
 
 @media only screen and (max-width: 600px) {

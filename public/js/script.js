@@ -1,6 +1,6 @@
 
 function initSchedule() {
-    let schedule, startTime, endTime, granularity;
+    let schedule, startTime, endTime, granularity, savedSchedule;
     const container = document.getElementById("container");
     let modalDiv = null;
 
@@ -29,6 +29,12 @@ function initSchedule() {
     };
 
     request.send();
+
+    savedSchedule = JSON.parse(localStorage.getItem("schedule")) || {};
+    // savedSchedule = {
+    //     event1: true,
+    //     event2: true
+    // }
     
     function addDayPicker() {
         const dayPicker = document.getElementById("dayPicker");
@@ -138,7 +144,10 @@ function initSchedule() {
                     subText.appendChild(document.createTextNode(eventData.subText));
                     newDiv.appendChild(subText);
                 }
-                newDiv.className = "hasSet";
+                newDiv.classList.add("hasSet");
+                if(savedSchedule[eventData.id]) {
+                    newDiv.classList.add("savedSet");
+                }
                 newDiv.addEventListener('click', function(clickEvent) {
                     if(modalDiv) {
                         modalDiv.parentElement.removeChild(modalDiv);
@@ -146,6 +155,7 @@ function initSchedule() {
                     container.appendChild(modalDiv = createInfoModal(eventData, venue, clickEvent));
                     clickEvent.stopPropagation();
                 });
+                eventData.div = newDiv;
                 newCell.appendChild(newDiv);
                 newCell.setAttribute("colspan", colspan);
                 if(eventData.endTime % 1 != 0) {
@@ -203,7 +213,28 @@ function initSchedule() {
         venueP.appendChild(document.createTextNode(venue.name));
         div.appendChild(venueP);
 
+        const saveDiv = document.createElement("div");
+        saveDiv.className = 'saveContainer';
+        const saveButton = document.createElement("button");
+        const saveText = document.createTextNode(savedSchedule[eventData.id] ? "Remove from Schedule" : "Add to Schedule");
+        saveButton.appendChild(saveText);
+        saveButton.addEventListener('click', function() {
+            if(!savedSchedule[eventData.id]) {
+                eventData.div.classList.add("savedSet");
+                savedSchedule[eventData.id] = true;
+                saveText.nodeValue = "Remove from Schedule";
+            } else {
+                eventData.div.classList.remove("savedSet");
+                savedSchedule[eventData.id] = false;
+                saveText.nodeValue = "Add to Schedule";
+            }
+            localStorage.setItem("schedule", JSON.stringify(savedSchedule));
+        });
+        saveDiv.appendChild(saveButton);
+        div.appendChild(saveDiv);
+
         const xDiv = document.createElement("div");
+        xDiv.className = 'x';
         xDiv.appendChild(document.createTextNode("\u2715"));
         xDiv.addEventListener('click', function() {
             div.parentElement.removeChild(div);

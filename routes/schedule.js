@@ -15,14 +15,17 @@ const schedule = [
               name: "Main Stage",
               events: [
                   {
+                      id: 1,
                       name: "Qrion",
                       startTime: 19.5,
                       endTime: 20.5
                   }, {
+                      id: 2,
                       name: "ALPHA9 b2b Spencer Brown",
                       startTime: 20.5,
                       endTime: 22
                   }, {
+                      id: 3,
                       name: "Mat Zo",
                       startTime: 22,
                       endTime: 23.5
@@ -32,10 +35,12 @@ const schedule = [
               name: "Folie Douce",
               events: [
                   {
+                      id: 4,
                       name: "Amber Stomp",
                       startTime: 15,
                       endTime: 16.5
                   }, {
+                      id: 5,
                       name: "Dirty South",
                       subText: "(Classic House Anthems)",
                       startTime: 16.5,
@@ -49,14 +54,17 @@ const schedule = [
               name: "Beats Club",
               events: [
                   {
+                      id: 6,
                       name: "Judah",
                       startTime: 23,
                       endTime: 24
                   }, {
+                      id: 7,
                       name: "Dirty South",
                       startTime: 24,
                       endTime: 25.5
                   }, {
+                      id: 8,
                       name: "Fatum",
                       startTime: 25.5,
                       endTime: 26.75
@@ -66,10 +74,12 @@ const schedule = [
               name: "Yak",
               events: [
                   {
+                      id: 9,
                       name: "8Kays",
                       startTime: 25,
                       endTime: 27
                   }, {
+                      id: 10,
                       name: "Spencer Brown",
                       startTime: 27,
                       endTime: 29
@@ -91,15 +101,18 @@ const schedule = [
               name: "Apres Stage",
               events: [
                   {
+                      id: 11,
                       name: "Amy Wiles",
                       startTime: 15,
                       endTime: 16.5
                   }, {
+                      id: 12,
                       name: "Oliver Smith",
                       subText: "(Anjuna Memories)",
                       startTime: 16.5,
                       endTime: 18.5
                   }, {
+                      id: 13,
                       name: "D&G FTO",
                       subText: "(Anjuna Memories)",
                       startTime: 18.5,
@@ -110,14 +123,17 @@ const schedule = [
               name: "Beats Club",
               events: [
                   {
+                      id: 14,
                       name: "Trance Wax",
                       startTime: 22,
                       endTime: 24
                   }, {
+                      id: 15,
                       name: "Spencer Brown b2b Qrion",
                       startTime: 24,
                       endTime: 25.5
                   }, {
+                      id: 16,
                       name: "ALPHA9",
                       startTime: 25.5,
                       endTime: 26.75
@@ -127,10 +143,12 @@ const schedule = [
               name: "Yak",
               events: [
                   {
+                      id: 17,
                       name: "Myon",
                       startTime: 25,
                       endTime: 27
                   }, {
+                      id: 18,
                       name: "Kyau & Albert",
                       startTime: 27,
                       endTime: 29
@@ -146,14 +164,17 @@ const schedule = [
             name: "Main Stage",
             events: [
                 {
+                    id: 19,
                     name: "Oliver Smith",
                     startTime: 19.5,
                     endTime: 20.5
                 }, {
+                    id: 20,
                     name: "Cosmic Gate",
                     startTime: 20.5,
                     endTime: 22
                 }, {
+                    id: 21,
                     name: "Seven Lions",
                     startTime: 22,
                     endTime: 23.5
@@ -163,10 +184,12 @@ const schedule = [
             name: "Folie Douce",
             events: [
                 {
+                    id: 22,
                     name: "La Push",
                     startTime: 15,
                     endTime: 16.5
                 }, {
+                    id: 23,
                     name: "D&G FTO",
                     startTime: 16.5,
                     endTime: 18.5
@@ -179,14 +202,17 @@ const schedule = [
             name: "Beats Club",
             events: [
                 {
+                    id: 24,
                     name: "Josep",
                     startTime: 23,
                     endTime: 24
                 }, {
+                    id: 25,
                     name: "Sunny Lax",
                     startTime: 24,
                     endTime: 25.5
                 }, {
+                    id: 26,
                     name: "Genix",
                     startTime: 25.5,
                     endTime: 26.75
@@ -196,11 +222,13 @@ const schedule = [
             name: "Yak",
             events: [
                 {
+                    id: 27,
                     name: "Mat Zo",
                     subText: "(D&B Set)",
                     startTime: 25,
                     endTime: 27
                 }, {
+                    id: 28,
                     name: "Tinlicker",
                     subText: "(House Set)",
                     startTime: 27,
@@ -223,35 +251,42 @@ const schedule = [
             name: "Apres Stage",
             events: [
                 {
+                    id: 29,
                     name: "Grum",
                     subText: "(Archives Set)",
                     startTime: 15,
                     endTime: 16.5
                 }, {
+                    id: 30,
                     name: "Maor Levi",
                     subText: "(Anjuna Memories)",
                     startTime: 16.5,
                     endTime: 18.5
                 }, {
+                    id: 31,
                     name: "Jon O'Bir",
                     startTime: 18.5,
                     endTime: 20
                 }, {
+                    id: 32,
                     name: "Gem & Tauri",
                     subText: "(Ophelia)",
                     startTime: 22,
                     endTime: 23
                 }, {
+                    id: 33,
                     name: "Crystal Skies",
                     subText: "(Ophelia)",
                     startTime: 23,
                     endTime: 24
                 }, {
+                    id: 34,
                     name: "Blastoyz",
                     subText: "(Ophelia)",
                     startTime: 24,
                     endTime: 25.25
                 }, {
+                    id: 35,
                     name: "Seven Lions",
                     subText: "(Ophelia)",
                     startTime: 25.25,
@@ -262,10 +297,12 @@ const schedule = [
             name: "Beats Club",
             events: [
                 {
+                    id: 36,
                     name: "DT8 Project",
                     startTime: 25,
                     endTime: 27
                 }, {
+                    id: 37,
                     name: "Nitrous Oxide",
                     subText: "(Anjuna Memories)",
                     startTime: 27,
@@ -288,22 +325,27 @@ const schedule = [
             name: "Folie Douce",
             events: [
                 {
+                    id: 38,
                     name: "Amy Wiles",
                     startTime: 15,
                     endTime: 16
                 }, {
+                    id: 39,
                     name: "PROFF",
                     startTime: 16,
                     endTime: 17.5
                 }, {
+                    id: 40,
                     name: "Tinlicker",
                     startTime: 17.5,
                     endTime: 19
                 }, {
+                    id: 41,
                     name: "Grum",
                     startTime: 19,
                     endTime: 20.5
                 }, {
+                    id: 42,
                     name: "ilan Bluestone",
                     startTime: 20.5,
                     endTime: 22
@@ -316,14 +358,17 @@ const schedule = [
             name: "Beats Club",
             events: [
                 {
+                    id: 43,
                     name: "Jaytech",
                     startTime: 23,
                     endTime: 24
                 }, {
+                    id: 44,
                     name: "Maor Levi",
                     startTime: 24,
                     endTime: 25.5
                 }, {
+                    id: 45,
                     name: "Super8 & Tab",
                     startTime: 25.5,
                     endTime: 26.75
@@ -333,10 +378,12 @@ const schedule = [
             name: "Yak",
             events: [
                 {
+                    id: 46,
                     name: "Amber Stomp b2b Amy Wiles",
                     startTime: 25,
                     endTime: 27
                 }, {
+                    id: 47,
                     name: "D&G FTO b2b Jon O'Bir",
                     startTime: 27,
                     endTime: 29
