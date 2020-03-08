@@ -6,6 +6,11 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 #titleLogo {
@@ -143,6 +148,11 @@ a {
 .infoModal div.saveContainer button:hover {
   background-color: #F5F5F5;
   border: 1px solid #555566;
+}
+
+.footnote {
+  font-size: 10pt;
+  color: #555555;
 }
 
 @media only screen and (max-width: 600px) {
