@@ -34,7 +34,7 @@ a {
   overflow-x: scroll;
 }
 
-.scheduleTable {
+#scheduleTable {
   font: 20px brown-regular,helvetica,arial,sans-serif;
   letter-spacing: -.04em;
   line-height: 1.15;
@@ -43,28 +43,28 @@ a {
   table-layout: fixed;
 }
 
-.scheduleTable th {
+#scheduleTable th {
   padding: 5px 10px;
   min-width: 120px;
 }
-.scheduleTable thead th {
+#scheduleTable thead th {
   border-bottom: 1px solid black;
 }
-.scheduleTable thead th:not(:last-child) {
+#scheduleTable thead th:not(:last-child) {
   border-right: 1px solid #999999;
 }
-.scheduleTable tbody tr td:not(:last-child):not(.partialCell) {
+#scheduleTable tbody tr td:not(:last-child):not(.partialCell) {
   border-right: 1px solid #999999;
 }
-.scheduleTable tbody tr:nth-child(odd) {
+#scheduleTable tbody tr:nth-child(odd) {
   background-color: #F3F7F3;
 }
 
-.scheduleTable tbody th {
+#scheduleTable tbody th {
   height: 65px;
 }
 
-.scheduleTable div {
+#scheduleTable div {
   padding: 5px 15px;
 }
 
@@ -93,7 +93,7 @@ a {
     font-size: 18px;
   }
 
-  .scheduleTable {
+  #scheduleTable {
     font-size: 18px;
   }
   
