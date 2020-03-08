@@ -184,6 +184,20 @@ function initSchedule() {
             scheduleBody.appendChild(newRow);
         }
 
+        // This row is a hack - to create a <td> for every spot, and ensure
+        // equal cell width.  Cells were not rendering with equal widths, otherwise.
+        const newRow = document.createElement("tr");
+        const newHeading = document.createElement("th");
+        newHeading.style.height = "0";
+        newHeading.style.padding = "0";
+        newRow.appendChild(newHeading);
+        for(let t=startTime*4; t<(endTime+1)*4; t++) {
+            const emptyCell = document.createElement("td");
+            emptyCell.style.border = "0 solid black";
+            newRow.appendChild(emptyCell);
+        }
+        scheduleBody.appendChild(newRow);
+
         document.addEventListener('click', function() {
             if(modalDiv) {
                 modalDiv.parentElement.removeChild(modalDiv);
