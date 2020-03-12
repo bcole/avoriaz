@@ -44,7 +44,7 @@ function initSchedule() {
             new Promise((resolve, reject) => {
                 sendRequest('/api/schedule/saved', resolve, reject, 'POST', savedSchedule);
             }).then(response => {
-                createSharedResults(`${window.location.origin}/?id=${JSON.parse(response).id}`);
+                createSharedResults(JSON.parse(response).id);
             });
         })
     }
@@ -309,7 +309,9 @@ function initSchedule() {
         return div;
     }
 
-    function createSharedResults(url) {
+    function createSharedResults(id) {
+        const url = `${window.location.origin}/?id=${id}`;
+        const newUrl = `${window.location.origin}/view?id=${id}`;
         const sharedResults = document.getElementById("sharedResults");
         sharedResults.innerHTML = "";
 
@@ -319,6 +321,13 @@ function initSchedule() {
         a.href = url;
         a.appendChild(document.createTextNode(url));
         sharedResults.appendChild(a);
+
+        sharedResults.appendChild(document.createElement("br"));
+        sharedResults.appendChild(document.createTextNode("Or (vertical layout): "));
+        const newLink = document.createElement("a");
+        newLink.href = newUrl;
+        newLink.appendChild(document.createTextNode(newUrl));
+        sharedResults.appendChild(newLink);
     }
 
     function getTime(time) {
