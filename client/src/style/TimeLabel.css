@@ -1,0 +1,17 @@
+.timeLabel {
+  border: 2px solid #333377;
+  background-color: #FAFAFF;
+  font-weight: bold;
+  text-align: right;
+  padding: 5px;
+  height: var(--timeSlotHeight);
+  box-sizing: border-box;
+}
+
+.timeLabel:not(:last-child) {
+  border-bottom: 0;
+}
+
+.timeLabel:last-child {
+  height: calc(var(--timeSlotHeight) + 4px);
+}

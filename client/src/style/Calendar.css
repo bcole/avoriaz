@@ -1,0 +1,44 @@
+:root {
+  --timeSlotHeight: 100px;
+}
+
+a {
+  color: #00B7FF;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#calendarContainer {
+  display: flex;
+  box-sizing: border-box;
+}
+
+.dayPicker {
+  padding-left: 5px;
+}
+
+.dayPicker li {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #EEEEFA;
+  cursor: pointer;
+}
+
+.dayPicker li:hover {
+  background-color: #FAFAFC;
+}
+
+.dayPicker li.selected {
+  background-color: #FFFFFF;
+  border-bottom: 2px solid #AAAAFF;
+  font-weight: bold;
+}
+
+.buildLink {
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
