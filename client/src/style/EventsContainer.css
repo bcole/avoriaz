@@ -3,6 +3,7 @@
   border: 2px solid #333377;
   border-left: none;
   width: 100%;
+  max-width: 1000px;
   background-color: #FFFFFF;
 }
 

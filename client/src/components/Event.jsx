@@ -7,7 +7,7 @@ function TimeLabel(props) {
     top: (props.event.startTime - props.startTime) * timeSlotHeight,
     height: (props.event.endTime - props.event.startTime) * timeSlotHeight - 2,
     left: (props.position) * 50 + "%",
-    width: "calc(50% - 1px)"
+    width: `calc(100% / ${props.maxConflicts + 1} - 1px)`
   };
 
   function getTime(time) {
